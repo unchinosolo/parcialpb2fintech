@@ -13,3 +13,4 @@
 - queSePuedaAgendarUnUsuarioExternoComoAmigo() 
 - queSeAcrediteUnExtraDe_5_PorcientoDeBitcoinEnUsuariosQueSuperenElAñoDeUso() 
 - queSePuedaRegistrarLasTransaccionesHechas() 
+- queNoSePuedaRetirarSaldoNegativo()
