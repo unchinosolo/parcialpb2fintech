@@ -11,13 +11,32 @@ public class FintechTest {
 	@Test
 	public void queSePuedaCrearUnUsuarioNuevo() 
 	{
+		String usuario  = "Leo35";
+		String nombre = "Leonel";
+		String apellido = "Gonzalez";
+		Integer dni = 25698745;
+		
+		Usuario nuevo = new Usuario(usuario, nombre, apellido, dni);
+		nuevaApp.agregarUsuario(nuevo);
+		
+		assertEquals(1,nuevaApp.cantidadDeUsuarios());
 		
 	}
 	
 	@Test
-	public void QueNoSePuedanCrearUsuariosRepetidos() 
+	public void queNoSePuedanCrearUsuariosRepetidos() 
 	{
+		String usuario  = "Leo35";
+		String nombre = "Leonel";
+		String apellido = "Gonzalez";
+		Integer dni = 25698745;
 		
+		Usuario nuevo = new Usuario(usuario, nombre, apellido, dni);
+		Usuario copia = nuevo;
+		nuevaApp.agregarUsuario(nuevo);
+		nuevaApp.agregarUsuario(copia);
+		
+		assertEquals(1,nuevaApp.cantidadDeUsuarios());
 	}
 	
 	@Test
@@ -27,19 +46,19 @@ public class FintechTest {
 	}
 	
 	@Test
-	public void QueSePuedaComprarBitcoinsA_200_Pesos() 
+	public void queSePuedaComprarBitcoinsA_200_Pesos() 
 	{
 		
 	}
 	
 	@Test
-	public void QueSePuedaComprarEtherumA_100_Pesos() 
+	public void queSePuedaComprarEtherumA_100_Pesos() 
 	{
 		
 	}
 	
 	@Test
-	public void QueSePuedaComprarDaiA_50_Pesos() 
+	public void queSePuedaComprarDaiA_50_Pesos() 
 	{
 		
 	}
@@ -51,13 +70,13 @@ public class FintechTest {
 	}
 	
 	@Test
-	public void QueSePuedaRetirarCriptomonedas() 
+	public void queSePuedaRetirarCriptomonedas() 
 	{
 		
 	}
 	
 	@Test
-	public void QueSePuedaRetirarPesos() 
+	public void queSePuedaRetirarPesos() 
 	{
 		
 	}
@@ -82,6 +101,12 @@ public class FintechTest {
 	
 	@Test
 	public void queSePuedaRegistrarLasTransaccionesHechas() 
+	{
+		
+	}
+	
+	@Test
+	public void queNoSePuedaRetirarSaldoNegativo() 
 	{
 		
 	}
