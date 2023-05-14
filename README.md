@@ -7,7 +7,6 @@
 - queSePuedaComprarEtherumA_100_Pesos() 
 - queSePuedaComprarDaiA_50_Pesos() 
 - queSePuedaTenerDivididoElSaldoEnPesosYEnCripto() 
-- queSePuedaRetirarCriptomonedas() 
 - queSePuedaRetirarPesos() 
 - queSePuedaTransferirDineroAOtroUsuario() 
 - queSePuedaAgendarUnUsuarioExternoComoAmigo() 
