@@ -8,6 +8,7 @@ public class CuentaUsuario extends Usuario {
 		private double saldoEnEtherum;
 		private double saldoEnDai;
 		private TipoDeMoneda tipoDeMoneda;
+		private Integer numeroTransaccion=0;
 		
 		public CuentaUsuario(Long cvu) {
 			this.cvu = cvu;
@@ -73,10 +74,12 @@ public class CuentaUsuario extends Usuario {
 			this.saldoEnPesos += pesos;
 		}
 		
-		public void extraerSaldo(Double pesos) {
+		public Boolean extraerSaldo(Double pesos) {
+			Boolean resultado = false;
 			if(this.saldoEnPesos > pesos) {
-				this.saldoEnPesos -= pesos;
-			}
+				this.saldoEnPesos -= pesos; 
+				resultado = true;
+			}return resultado;
 		}
 
 
@@ -105,7 +108,19 @@ public class CuentaUsuario extends Usuario {
 		
 
 
+		public Integer getNumeroTransaccion() {
+			return this.numeroTransaccion;
+		}
+
+
+		public void setNumeroTransaccion(Integer numeroTransaccion) {
+			this.numeroTransaccion = numeroTransaccion;
+		}
 		
+		public Integer aumentarTransacción() {
+			this.numeroTransaccion ++;
+			return this.getNumeroTransaccion();
+		}
 		
 		
 		

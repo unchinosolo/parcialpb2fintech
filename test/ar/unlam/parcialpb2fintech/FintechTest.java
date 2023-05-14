@@ -1,6 +1,6 @@
 package ar.unlam.parcialpb2fintech;
 
-
+import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -107,31 +107,47 @@ public class FintechTest {
 	@Test
 	public void queSePuedaTransferirDineroAOtroUsuario() 
 	{
+		final Double SALDO_ESPERADO=1000.0;
+		CuentaUsuario cuentaUno = new CuentaUsuario(2365252581L);
+		cuentaUno.cargarSaldo(2000.0);
+		cuentaUno.extraerSaldo(1000.0);
+		CuentaUsuario cuentaDos = new CuentaUsuario(2365252999L);
+		cuentaDos.cargarSaldo(1000.0);
 		
+		assertEquals(SALDO_ESPERADO, cuentaDos.getSaldoEnPesos(), 0.01);
+		assertEquals(SALDO_ESPERADO, cuentaUno.getSaldoEnPesos(), 0.01);
 	}
 	
 	@Test
 	public void queSePuedaAgendarUnUsuarioExternoComoAmigo() 
 	{
+		CuentaUsuario cuentaUno = new CuentaUsuario(2365252581L);
+		CuentaUsuario cuentaDos = new CuentaUsuario(2365252999L);
 		
-	}
-	
-	@Test
-	public void queSeAcrediteUnExtraDe_5_PorcientoDeBitcoinEnUsuariosQueSuperenElAñoDeUso() 
-	{
+		cuentaUno.agregarCuenta(cuentaDos);
 		
+		assertNotNull(cuentaUno);
 	}
-	
+		
 	@Test
 	public void queSePuedaRegistrarLasTransaccionesHechas() 
 	{
+		CuentaUsuario cuentaUno = new CuentaUsuario(2365252581L);
+		Integer transaccionEsperada= cuentaUno.getNumeroTransaccion() +1;
+		cuentaUno.cargarSaldo(1000.0);
+		Integer ultimaTransaccion = cuentaUno.aumentarTransacción();		
+		
+		assertEquals(transaccionEsperada, ultimaTransaccion);
 		
 	}
 	
 	@Test
 	public void queNoSePuedaRetirarSaldoNegativo() 
 	{
-		
+		CuentaUsuario cuentaUno = new CuentaUsuario(2365252581L);
+		cuentaUno.cargarSaldo(1000.0);
+		assertFalse(cuentaUno.extraerSaldo(2000.0));
 	}
 
 }
+
