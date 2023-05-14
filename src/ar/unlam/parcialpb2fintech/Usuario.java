@@ -9,7 +9,7 @@ public class Usuario {
 	private String nombre;
 	private String apellido;
 	private Integer dni;
-	private ArrayList<CuentaUsuario> listaDeUsuariosAmigos = new ArrayList<CuentaUsuario>();
+	private ArrayList<CuentaUsuario> cuentas = new ArrayList<CuentaUsuario>();
 	
 	public Usuario() { 	}
 	
@@ -58,12 +58,12 @@ public class Usuario {
 		this.dni = dni;
 	}
 
-	public ArrayList<CuentaUsuario> getListaDeUsuariosAmigos() {
-		return listaDeUsuariosAmigos;
+	public ArrayList<CuentaUsuario> getCuentas() {
+		return cuentas;
 	}
 
-	public void setListaDeUsuariosAmigos(ArrayList<CuentaUsuario> listaDeUsuariosAmigos) {
-		this.listaDeUsuariosAmigos = listaDeUsuariosAmigos;
+	public void setListaDeUsuariosAmigos(ArrayList<CuentaUsuario> cuentas) {
+		this.cuentas = cuentas;
 	}
 
 	@Override
@@ -84,6 +84,10 @@ public class Usuario {
 		}
 		Usuario other = (Usuario) obj;
 		return Objects.equals(dni, other.dni) && Objects.equals(usuario, other.usuario);
+	}
+
+	public void agregarCuenta(CuentaUsuario cuentaUsuario) {
+		this.cuentas.add(cuentaUsuario);
 	}
 	
 	

@@ -3,19 +3,14 @@ package ar.unlam.parcialpb2fintech;
 public class CuentaUsuario extends Usuario {
 	
 		private Long cvu;
-		private Double saldoEnPesos;
-		private Double saldoEnBitcoins;
-		private Double saldoEnEtherum;
-		private Double saldoEnDai;
+		private double saldoEnPesos;
+		private double saldoEnBitcoins;
+		private double saldoEnEtherum;
+		private double saldoEnDai;
 		private TipoDeMoneda tipoDeMoneda;
 		
-		public CuentaUsuario(Long cvu, Double saldoEnPesos, Double saldoEnBitcoins, Double saldoEnEtherum,
-				Double saldoEnDai) {
+		public CuentaUsuario(Long cvu) {
 			this.cvu = cvu;
-			this.saldoEnPesos = saldoEnPesos;
-			this.saldoEnBitcoins = saldoEnBitcoins;
-			this.saldoEnEtherum = saldoEnEtherum;
-			this.saldoEnDai = saldoEnDai;
 		}
 
 
@@ -74,13 +69,13 @@ public class CuentaUsuario extends Usuario {
 			this.saldoEnDai = saldoEnDai;
 		}
 		
-		public void cargarSaldo(Double pesos) {
+		public void cargarSaldo(double pesos) {
 			this.saldoEnPesos += pesos;
 		}
 		
 		public void extraerSaldo(Double pesos) {
 			if(this.saldoEnPesos > pesos) {
-				this.saldoEnBitcoins -= pesos;
+				this.saldoEnPesos -= pesos;
 			}
 		}
 
@@ -92,6 +87,19 @@ public class CuentaUsuario extends Usuario {
 
 		public void setTipoDeMoneda(TipoDeMoneda tipoDeMoneda) {
 			this.tipoDeMoneda = tipoDeMoneda;
+		}
+		
+		public void comprarCriptomonedas(TipoDeMoneda tipo, Double monto) {
+			if(TipoDeMoneda.BITCOIN.equals(tipo) && saldoEnPesos >= monto) {
+				this.saldoEnPesos -= monto;
+				this.saldoEnBitcoins += monto / 200;
+			}if(TipoDeMoneda.ETHERUM.equals(tipo) && saldoEnPesos >= monto) {
+				this.saldoEnPesos -= monto;
+				this.saldoEnEtherum += monto/100;
+			}if(TipoDeMoneda.DAI.equals(tipo) && saldoEnPesos >= monto) {
+				this.saldoEnPesos -= monto;
+				this.saldoEnDai += monto/50;
+			}
 		}
 		
 		
