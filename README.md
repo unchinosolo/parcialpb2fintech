@@ -1,5 +1,5 @@
 # Decidimos crear como grupo, una aplicacion fintech llamada __“liberty coins”__ 
-###la cual sirva para poder depositar en pesos y comprar distintas criptomonedas, asimismo que se pueda crear un usuario como titular de la cuenta, entre varios test que hicimos se encuentran: 
+### la cual sirva para poder depositar en pesos y comprar distintas criptomonedas, asimismo que se pueda crear un usuario como titular de la cuenta, entre varios test que hicimos se encuentran: 
 
 - queSePuedaCrearUnUsuarioNuevo() 
 - queNoSePuedanCrearUsuariosRepetidos() 
