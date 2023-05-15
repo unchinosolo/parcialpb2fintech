@@ -1,7 +1,13 @@
 package ar.unlam.parcialpb2fintech;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class CuentaUsuario extends Usuario {
-	
+		
+		private final Double VALOR_BITCOIN = 200.0;
+		private final Double VALOR_ETHEREUM = 100.0;
+		private final Double VALOR_DAI = 50.0;
 		private Long cvu;
 		private double saldoEnPesos;
 		private double saldoEnBitcoins;
@@ -9,15 +15,18 @@ public class CuentaUsuario extends Usuario {
 		private double saldoEnDai;
 		private TipoDeMoneda tipoDeMoneda;
 		private Integer numeroTransaccion=0;
+
 		
 		public CuentaUsuario(Long cvu) {
 			this.cvu = cvu;
+
 		}
 
 
 		public CuentaUsuario(Long cvu, Double saldoEnPesos) {
 			this.cvu = cvu;
 			this.saldoEnPesos = saldoEnPesos;
+			
 		}
 
 
@@ -95,13 +104,16 @@ public class CuentaUsuario extends Usuario {
 		public void comprarCriptomonedas(TipoDeMoneda tipo, Double monto) {
 			if(TipoDeMoneda.BITCOIN.equals(tipo) && saldoEnPesos >= monto) {
 				this.saldoEnPesos -= monto;
-				this.saldoEnBitcoins += monto / 200;
+				this.saldoEnBitcoins += monto / VALOR_BITCOIN;
+
 			}if(TipoDeMoneda.ETHERUM.equals(tipo) && saldoEnPesos >= monto) {
 				this.saldoEnPesos -= monto;
-				this.saldoEnEtherum += monto/100;
+				this.saldoEnEtherum += monto/ VALOR_ETHEREUM;
+
 			}if(TipoDeMoneda.DAI.equals(tipo) && saldoEnPesos >= monto) {
 				this.saldoEnPesos -= monto;
-				this.saldoEnDai += monto/50;
+				this.saldoEnDai += monto/ VALOR_DAI;
+
 			}
 		}
 		
@@ -122,9 +134,7 @@ public class CuentaUsuario extends Usuario {
 			return this.getNumeroTransaccion();
 		}
 		
-		
-		
-		
-		
+
+	
 		
 }

@@ -27,7 +27,32 @@ public class Fintech {
 		return registroDeUsuarios.size();
 	}
 	
+	public Usuario buscarCuenta(Integer dni) {
+		for(Usuario u : registroDeUsuarios) {
+			if(u.getDni() == dni) {
+				return u;
+			}
+		}
+		return null;
+	}
+
+	public String listarCuentas() {
+		String cuentas = "DATOS DE CUENTAS AL DIA DE LA FECHA: \n";
+		
+		for(Usuario u : registroDeUsuarios) {
+			cuentas += u.toString() + " \n";
+		}
+		
+		return cuentas;
+	}
 	
 	
+	public void darDeBajaAUsuario(Integer dni, String nombre, String apellido) {
+		for(Usuario u : registroDeUsuarios) {
+			if(u.getDni().equals(dni) && u.getNombre().equals(nombre) && u.getApellido().equals(apellido)) {
+				registroDeUsuarios.remove(u);
+			}
+		}
+	}
 
 }

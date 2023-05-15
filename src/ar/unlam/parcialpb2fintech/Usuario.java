@@ -91,6 +91,20 @@ public class Usuario {
 	}
 	
 	
+	public void eliminarCuenta(CuentaUsuario aEliminar) {
+		this.cuentas.remove(aEliminar);
+	}
+	
+	public Integer obtenerCantidadDeAmigos() {
+		return this.cuentas.size();
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [usuario = " + usuario + ", nombre = " + nombre + ", apellido = " + apellido + ", dni = " + dni + "]";
+	}
+	
+	
 	
 
 	

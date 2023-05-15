@@ -148,6 +148,84 @@ public class FintechTest {
 		cuentaUno.cargarSaldo(1000.0);
 		assertFalse(cuentaUno.extraerSaldo(2000.0));
 	}
+	
+	@Test
+	public void queSePuedaObtenerInformacionDeLosUsuarios() {
+		String usuario  = "Leo35";
+		String nombre = "Leonel";
+		String apellido = "Gonzalez";
+		Integer dni = 25698745;
+		
+		Usuario nuevo = new Usuario(usuario, nombre, apellido, dni);
+		
+		String usuarioDos  = "PepeArgento";
+		String nombreDos = "Jose";
+		String apellidoDos = "Argento";
+		Integer dniDos = 42543660;
+		
+		Usuario nuevoDos = new Usuario(usuarioDos, nombreDos, apellidoDos, dniDos);
+		
+		nuevaApp.agregarUsuario(nuevo);
+		nuevaApp.agregarUsuario(nuevoDos);
+		
+		System.out.println(nuevaApp.listarCuentas());
+	}
+	
+	
+	@Test
+	public void queSePuedaBuscarUnUsuarioPorDNI () {
+		String usuario  = "PepeArgento";
+		String nombre = "Jose";
+		String apellido = "Argento";
+		Integer dni = 42543660;
+		Usuario nuevo = new Usuario(usuario, nombre, apellido, dni);
+		
+		nuevaApp.agregarUsuario(nuevo);
+		
+		Usuario valorObtenido = nuevaApp.buscarCuenta(dni);
+		Usuario valorEsperado = nuevo;
+		
+		assertEquals(valorObtenido, valorEsperado);
+	}
+
+	@Test
+	public void queSePuedaEliminarUnAmigo() {
+		
+		CuentaUsuario cuentaUno = new CuentaUsuario(2365252581L);
+		CuentaUsuario cuentaDos = new CuentaUsuario(2365252582L);
+		CuentaUsuario cuentaTres = new CuentaUsuario(2365252583L);
+
+		Usuario jose = new Usuario("Jose24", 12344);
+		
+		jose.agregarCuenta(cuentaUno);
+		jose.agregarCuenta(cuentaDos);
+		jose.agregarCuenta(cuentaTres);
+		
+		jose.eliminarCuenta(cuentaTres);
+		
+		Integer valorObtenido = jose.obtenerCantidadDeAmigos();
+		Integer valorEsperado = 2;
+		
+		assertEquals(valorEsperado, valorObtenido);
+	}
+
+	@Test
+	public void queSePuedaDarDeBajaUnUsuario() {
+		String usuario  = "PepeArgento";
+		String nombre = "Jose";
+		String apellido = "Argento";
+		Integer dni = 42543660;
+		Usuario nuevo = new Usuario(usuario, nombre, apellido, dni);
+		
+		nuevaApp.agregarUsuario(nuevo);
+
+		nuevaApp.darDeBajaAUsuario(dni, nombre, apellido);
+		
+		Integer valorObtenido = nuevaApp.cantidadDeUsuarios();
+		Integer valorEsperado = 0;
+		
+		assertEquals(valorEsperado, valorObtenido);
+	}
 
 }
 
